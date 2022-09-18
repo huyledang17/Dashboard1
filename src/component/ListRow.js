@@ -11,6 +11,11 @@ export default class ListRow extends Component {
       this.props.eidtFunClick();
       this.props.changEditUserForm();
     }
+    //hàm lấy id của mẫu tin cần xóa
+    deleteUser = (idUser) => {
+      // console.log('id cuả user là: '+ idUser);
+      this.props.deleteClick(idUser);
+    }
   render() {
     return (
         <tr>
@@ -21,7 +26,7 @@ export default class ListRow extends Component {
         <td>
           <div className="btn-group">
             <div onClick={() => this.editClick()} className="btn btn-warning sua"><i className="fa fa-pencil" aria-hidden="true" />Sửa</div>
-            <div className="btn btn-danger xoa"><i className="fa-solid fa-xmark" /> - Xóa</div>
+            <div onClick={(idUser) => this.deleteUser(this.props.id)} className="btn btn-danger xoa"><i className="fa-solid fa-xmark" /> - Xóa</div>
           </div>
         </td>
       </tr>

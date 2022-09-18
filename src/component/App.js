@@ -62,13 +62,31 @@ class App extends Component {
       }
     })
   }
+  //hàm lấy id xóa từ List gửi lên
+  // deleteUserInfo= (idUSer) => {
+  //   // console.log(idUSer);
+    
+  // }
+  deleteUserInfo = (idUser) => {
+    var manga = [1, 2, 3, 4, 5];
+    var x = 3;
+    manga = manga.filter(abc => abc != x)
+    console.log(manga);
+    var tempData = this.state.data;
+    tempData=tempData.filter(item=>item.id!=idUser);
+    this.setState({
+      data:tempData
+    });
+  }
   render() {
+   
     var ketQua = [];
     this.state.data.forEach((item) => {
       if (item.name.indexOf(this.state.searchResult) !== -1) {
         ketQua.push(item);
       }
     });
+    
     return (
       <div>
         <Header />
@@ -85,6 +103,7 @@ class App extends Component {
               dataUserProps={this.state.data}
               edit={(info) => this.editUser(info)}
               changEditUserForm={() => this.changEditUserForm()}
+              deleteUserInfo={(idUser) => this.deleteUserInfo(idUser)}
             />
             <Adduser hienthiForm={this.state.hienthiForm} getUser={(name, tel, permission) => this.addInfo(name, tel, permission)} />
           </div>

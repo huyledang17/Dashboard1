@@ -5,14 +5,25 @@ export default class List extends Component {
   mappingDataUser = () => this.props.dataUserProps.map((value, key) => (
     <ListRow
       stt={key}
+      id={value.id}
       userName={value.name}
       tel={value.tel}
       Permission={value.Permission}
       eidtFunClick={(info) => this.props.edit(value)}
       changEditUserForm={() => this.props.changEditUserForm()}
+      deleteClick={(idUser) => this.deleteClick(idUser)}
     />
   ))
+  deleteClick = (idUser) => {
+    // console.log('id cuả user là: '+ idUser);
+    // console.log(idUser);
+    this.props.deleteUserInfo(idUser);
 
+
+    //cách sử dụng hàm Filter
+    
+  }
+  
   render() {
     // console.log(this.props.dataUserProps);
     return (
